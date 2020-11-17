@@ -7,7 +7,7 @@ import Transaction from '../models/Transaction';
 import TransactionsRepository from '../repositories/TransactionsRepository';
 import Category from '../models/Category';
 
-interface csvTransaction {
+interface CSVTransaction {
   title: string;
   type: 'income' | 'outcome';
   value: number;
@@ -26,7 +26,7 @@ class ImportTransactionsService {
 
     const parseCSV = contactsReadStream.pipe(parsers);
 
-    const transactions: csvTransaction[] = [];
+    const transactions: CSVTransaction[] = [];
     const categories: string[] = [];
 
     parseCSV.on('data', async line => {
